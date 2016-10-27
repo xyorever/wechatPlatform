@@ -14,7 +14,7 @@ if ($_GET) {
 
 	$chance = $number % 10;
 	
- 	echo $number." ".$chance;
+ 	echo $$_GET['name']." ".$number." ".$chance;
 
 	// if ($chance <= 3){
 	// 	$figure = $number * 97 % 12 + 1;
