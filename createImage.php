@@ -46,7 +46,7 @@ if ($_GET) {
 	$font = 'font/cn_cute.ttf';
 
 	$text = "Hi," . $_GET['name'] . "，";
-	imagettftext($im, 25, 0, 50, 80, $color, $font, $text.$number);
+	imagettftext($im, 25, 0, 50, 80, $color, $font, $text);
 
 	imagettftext($im, 25, 0, 50, 110, $color, $font, "与你相性最高的");
 
