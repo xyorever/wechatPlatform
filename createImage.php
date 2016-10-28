@@ -12,26 +12,27 @@ if ($_GET) {
 
 	$number = countNumber($_GET['name']);
 
-	$chance = $number % 10;
-	
+	$chance = $number % 31;
+	$chance %= 10;
 
-	if ($chance <= 3){
+
+	if ($chance >= 6){
 		$figure = $number * 97 % 12 + 1;
 
 		$dst = resize_image("figures/n".$figure.".jpg", 150, 150, true);
 
 
-	}else if ($chance <= 6){
+	}else if ($chance >= 3){
 		$figure = $number * 97 % 27 + 1;
 
 		$dst = resize_image("figures/r".$figure.".jpg", 150, 150, true);		
 
 
-	}else if ($chance <= 8){
+	}else if ($chance >= 1){
 		$figure = $number * 97 % 16 + 1;
 
 		$dst = resize_image("figures/sr".$figure.".jpg", 150, 150, true);
-	}else if ($chance == 9){
+	}else if ($chance == 0){
 		$figure = $number * 97 % 8 + 1;
 
 		$dst = resize_image("figures/ssr".$figure.".jpg", 150, 150, true);

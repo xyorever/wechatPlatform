@@ -210,7 +210,7 @@ class bihua
 	function toNumber($dest)
 	{
 		if ($dest)
-			return ord(strtolower($dest)) - 96;
+			return ord($dest)+66;
 		else
 			return 0;
 	}
@@ -220,7 +220,7 @@ function countNumber($str){
 	$text = new bihua();
 	$strlen = strlen( $str );
 	$number = 0;
-
+	
 	switch ($type = mb_detect_encoding($str)) {
 		case 'UTF-8':
 		for( $i = 0; $i <= $strlen; $i+=3 ) {
@@ -228,14 +228,17 @@ function countNumber($str){
 			$number += $text -> find($char);
 	 	}
 		
-	  return $number;
+	  return $number*10+9;
 		  break;
 		
 		case 'ASCII':
+
 	  	  for( $i = 0; $i <= $strlen; $i++ ) {
+	  	  	// echo $i;
 			 $char = substr( $str, $i, 1 );
 			 $number += toNumber($char);
 		  }
+		return $number;
 		break;
 	}
 }
