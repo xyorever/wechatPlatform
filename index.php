@@ -7,9 +7,11 @@
 <body>
 
 <form name="getName">
-<input type="text" name="name" placeholder="请在此处填写姓名"> <br>
-<input type="button" value="提交" onclick="checkLength()">
+<input type="text" name="name" placeholder="&#35831;&#22312;&#27492;&#22788;&#22635;&#20889;&#22995;&#21517;"> <br>
+<input type="button" value="&#25552;&#20132;" onclick="checkLength()">
 </form> 
+
+
 
 
 <script>

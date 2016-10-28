@@ -5,58 +5,54 @@ if ($_GET) {
 
 
 
-	// header('Content-Type: image/png');
+	header('Content-Type: image/png');
 	$im = imagecreatefromjpeg("bg.jpg");
 	$color = imagecolorallocate($im, 0, 0, 0);
 
 
-	$number = seperation($_GET['name']);
+	$number = countNumber($_GET['name']);
 
 	$chance = $number % 10;
 	
- 	echo $$_GET['name']." ".$number." ".$chance;
 
-	// if ($chance <= 3){
-	// 	$figure = $number * 97 % 12 + 1;
+	if ($chance <= 3){
+		$figure = $number * 97 % 12 + 1;
 
-	// 	$dst = resize_image("figures/n".$figure.".jpg", 150, 150, true);
-
-
-	// }else if ($chance <= 6){
-	// 	$figure = $number * 97 % 27 + 1;
-
-	// 	$dst = resize_image("figures/r".$figure.".jpg", 150, 150, true);		
+		$dst = resize_image("figures/n".$figure.".jpg", 150, 150, true);
 
 
-	// }else if ($chance <= 8){
-	// 	$figure = $number * 97 % 16 + 1;
+	}else if ($chance <= 6){
+		$figure = $number * 97 % 27 + 1;
 
-	// 	$dst = resize_image("figures/sr".$figure.".jpg", 150, 150, true);
-	// }else if ($chance == 9){
-	// 	$figure = $number * 97 % 8 + 1;
+		$dst = resize_image("figures/r".$figure.".jpg", 150, 150, true);		
 
-	// 	$dst = resize_image("figures/ssr".$figure.".jpg", 150, 150, true);
-	// }else{
 
-	// }
+	}else if ($chance <= 8){
+		$figure = $number * 97 % 16 + 1;
 
-	// imagealphablending($im, false);
-	// imagesavealpha($im, true);
+		$dst = resize_image("figures/sr".$figure.".jpg", 150, 150, true);
+	}else if ($chance == 9){
+		$figure = $number * 97 % 8 + 1;
 
-	// imagecopy ( $im , $dst, 389 , 50 , 0, 0 , 150 , 150 );
+		$dst = resize_image("figures/ssr".$figure.".jpg", 150, 150, true);
+	}else{
 
-	// // $font = 'font/arial.ttf';
-	// $font = 'font/cn_cute.ttf';
+	}
 
-	// $text = $_GET['name'];
-	// imagettftext($im, 65, 0, 50, 170, $color, $font, $text);
+	imagecopy ( $im , $dst, 389 , 50 , 0, 0 , 150 , 150 );
 
-	// 	// imagepng($transparent);
-	// 	// imagedestroy($transparent);
-	// 	// imagepng($dst);
-	// 	// imagedestroy($dst);
-	// imagepng($im);
-	// imagedestroy($im);
+
+	$font = 'font/cn_cute.ttf';
+
+	$text = "Hi," . $_GET['name'] . "，";
+	imagettftext($im, 25, 0, 50, 80, $color, $font, $text);
+
+	imagettftext($im, 25, 0, 50, 110, $color, $font, "与你相性最高的");
+
+	imagettftext($im, 25, 0, 50, 140, $color, $font, "式神是...");
+
+	imagepng($im);
+	imagedestroy($im);
 
 
 } else {
